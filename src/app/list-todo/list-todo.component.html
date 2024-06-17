@@ -1,0 +1,9 @@
+<app-todo-item
+  *ngFor="let todo of todos"
+  [item]="todo"
+  (deleteItemEvent)="deleteTodo($event)"
+  (changeItemEvent)="changeDone(todo)"
+  (newItemEvent)="onTodoUpdated($event)"
+>
+</app-todo-item>
+<app-todo-form (newTache)="ajoutTache($event)"> </app-todo-form>

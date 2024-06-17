@@ -1,0 +1,34 @@
+<div class="row">
+  <div class="col s12 m6">
+    <div
+      [ngClass]="{
+        'card blue-grey darken-1': item.done,
+        'card grey lighten-3': !item.done
+      }"
+    >
+      <div class="card-content black-text">
+        <span
+          class="card-title card-title-flex"
+          style="display: flex; justify-content: space-between;"
+        >
+          <span *ngIf="!modif; else editModeInput"
+            >{{ item.label }}
+            <p>Créé le : {{ item.creationDate | customPipe : item.done }}</p>
+          </span>
+          <ng-template #editModeInput>
+            <input
+              type="text"
+              [(ngModel)]="editedLabel"
+              (keyup.enter)="onEditDone()"
+            />
+          </ng-template>
+          <i class="material-icons" (click)="modifLabel()">edition</i>
+          <i class="material-icons" (click)="onDelete()">delete</i>
+        </span>
+      </div>
+      <div class="card-action">
+        <a href="#" (click)="test()">{{ item.done ? 'Done' : 'Undone' }}</a>
+      </div>
+    </div>
+  </div>
+</div>

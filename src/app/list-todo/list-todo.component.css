@@ -1,0 +1,11 @@
+.bleu {
+  color: blue;
+}
+
+.rouge {
+  color: red;
+}
+
+.line-over-text {
+  text-decoration: line-through;
+}

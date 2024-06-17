@@ -1,0 +1,27 @@
+<form (ngSubmit)="transmitTache()" #varForm="ngForm">
+  <input
+    type="text"
+    name="nom"
+    required
+    maxlength="20"
+    minlength="4"
+    pattern="[a-zA-Z0-9 ]*"
+    [(ngModel)]="tache"
+    #nomVariable="ngModel"
+    (keyup.enter)="transmitTache()"
+  />
+  <div *ngIf="nomVariable.errors">
+    <div *ngIf="nomVariable.errors.required">Ce champ est requis</div>
+    <div *ngIf="nomVariable.errors.pattern">
+      Ce champ ne respecte pas le format attendu
+    </div>
+    <div *ngIf="nomVariable.errors.maxlength">
+      Ce champ dépasse le nombre maximal de caractères autorisés
+    </div>
+    <div *ngIf="nomVariable.errors.minlength">
+      Ce champ n'a pas la taille minimum requise
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="varForm.invalid">Ajouter une tâche</button>
+</form>

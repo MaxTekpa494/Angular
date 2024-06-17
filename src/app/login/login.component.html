@@ -1,0 +1,25 @@
+<form (ngSubmit)="changeCompo()" #varForm="ngForm">
+  <input
+    type="text"
+    name="nom"
+    required
+    maxlength="20"
+    minlength="3"
+    pattern="[a-zA-Z0-9]*"
+    [formControl]="userName"
+  />
+  <div *ngIf="userName.invalid && userName.touched">
+    <div *ngIf="userName.errors.required">Ce champ est requis</div>
+    <div *ngIf="userName.errors.pattern">
+      Ce champ ne respecte pas le format attendu
+    </div>
+    <div *ngIf="userName.errors.maxlength">
+      Ce champ dépasse le nombre maximal de caractères autorisés
+    </div>
+    <div *ngIf="userName.errors.minlength">
+      Ce champ n'a pas la taille minimum requise
+    </div>
+  </div>
+
+  <button type="submit" [disabled]="userName.invalid">Connexion</button>
+</form>
